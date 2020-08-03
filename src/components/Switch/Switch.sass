@@ -1,0 +1,63 @@
+.Switch
+  $spacing: 2px
+  $component-width: 2.25rem
+  $component-height: 1.25rem
+  margin: 0 0 1rem 0
+  .switch-content
+    display: inline-flex
+    align-items: center
+    .switch-label
+      margin: 0
+      padding: 0
+      user-select: none
+      flex: 1
+      color: #4F5D75
+      font-size: 0.875rem
+      margin-right: $component-height / 2
+      white-space: nowrap
+      text-overflow: initial
+      overflow: initial
+      text-align: right
+    .switch
+      position: relative
+      display: inline-block
+      width: $component-width
+      height: $component-height
+      margin: 0
+      > input
+        display: none
+        &:checked + .slider
+          border-color: #4f5d75
+        &:checked + .slider::before
+          background-color: #4f5d75
+          transform: translateX(calc(#{$component-width} - 100% - #{4 * $spacing}))
+      .slider
+        position: absolute
+        cursor: pointer
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        border: solid $spacing rgba(#4f5d75, .2)
+        transition-property: all
+        border-radius: $component-height
+        &:before
+          position: absolute
+          content: ""
+          height: 13px
+          width: 13px
+          left: $spacing
+          right: auto
+          bottom: $spacing
+          background-color: rgba(#4f5d75, .2)
+          transition: all .1s ease-in-out
+          transition-property: all
+          border-radius: 50%
+  &.disabled
+    opacity: 0.3
+  &.left
+    .switch-content
+      flex-direction: row-reverse
+      .switch-label
+        margin-right: 0
+        margin-left: $component-height / 2
